@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "280248817029",
+    "firebase_url": "https://smartmemo-40769.firebaseio.com",
+    "project_id": "smartmemo-40769",
+    "storage_bucket": "smartmemo-40769.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280248817029:android:2c82a20aaff9eb1e",
+        "android_client_info": {
+          "package_name": "com.alonedroid.smartmemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280248817029-fqf24qp4t2732pm0v85goegf5vclsv21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIm52KONRWRSSMG4PFc9KJApKJNkDp1As"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
