@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.alonedroid.smartmemo.databinding.ActivityMainBinding;
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE_MAIN_ACTIVITY = 1101;
     private ActivityMainBinding mBinding;
-    private TypedArray mMenuColors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +33,45 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         assembleLeftMenu();
+        hideLeftMenuShadow(0);
     }
 
     private void assembleLeftMenu() {
         LinearLayout.LayoutParams lp = SmViewPlant.lpMx0(1);
         String[] menuLabels = SmResourceManager.getMainLeftMenu();
-        mMenuColors = SmResourceManager.getMainMenuColor();
+        TypedArray menuColors = SmResourceManager.getMainMenuColor();
 
         for (int i = 0; i < menuLabels.length; i++) {
-            mBinding.mainLeftMenu.addView(
-                    SmViewPlant.shipMainLeftMenu(menuLabels[i], mMenuColors.getColor(i, Color.CYAN))
-                    , lp);
+            final int index = i;
+            View view = SmViewPlant.shipMainLeftMenu(menuLabels[i], menuColors.getColor(i, Color.CYAN));
+            view.setOnClickListener(v -> clickLeftMenu(index));
+            mBinding.mainLeftMenu.addView(view, lp);
+        }
+    }
+
+    private void clickLeftMenu(int index) {
+        hideLeftMenuShadow(index);
+    }
+
+    private void hideLeftMenuShadow(int index) {
+        mBinding.mainLeftMenuShadow0.setVisibility(View.VISIBLE);
+        mBinding.mainLeftMenuShadow1.setVisibility(View.VISIBLE);
+        mBinding.mainLeftMenuShadow2.setVisibility(View.VISIBLE);
+        mBinding.mainLeftMenuShadow3.setVisibility(View.VISIBLE);
+
+        switch (index) {
+            case 0:
+                mBinding.mainLeftMenuShadow0.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                mBinding.mainLeftMenuShadow1.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                mBinding.mainLeftMenuShadow2.setVisibility(View.INVISIBLE);
+                break;
+            case 3:
+                mBinding.mainLeftMenuShadow3.setVisibility(View.INVISIBLE);
+                break;
         }
     }
 }

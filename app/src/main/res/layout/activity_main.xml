@@ -27,12 +27,45 @@
             android:orientation="vertical"
             />
 
-        <View
+        <LinearLayout
             android:id="@+id/main_left_menu_shadow"
             android:layout_width="7dp"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/main_left_menu"
-            android:background="@drawable/background_shadow"
-            />
+            android:orientation="vertical"
+            >
+
+            <View
+                android:id="@+id/main_left_menu_shadow_0"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_shadow"
+                />
+
+            <View
+                android:id="@+id/main_left_menu_shadow_1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_shadow"
+                />
+
+            <View
+                android:id="@+id/main_left_menu_shadow_2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_shadow"
+                />
+
+            <View
+                android:id="@+id/main_left_menu_shadow_3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_shadow"
+                />
+        </LinearLayout>
     </RelativeLayout>
 </layout>

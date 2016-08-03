@@ -6,10 +6,32 @@
         <item>設\n定</item>
     </string-array>
 
+    <string-array name="main_right_menu_input">
+        <item>メモ入力</item>
+        <item>予定入力</item>
+        <item>記録入力</item>
+    </string-array>
+
+    <string-array name="main_right_menu_clock">
+        <item>カウント\nアップ</item>
+        <item>カウント\nダウン</item>
+    </string-array>
+
+    <string-array name="main_right_menu_setting">
+        <item>通知領域\n表示機能</item>
+        <item>タグ管理</item>
+    </string-array>
+
     <array name="main_left_menu_color">
         <item>@color/sp_chartreuse</item>
         <item>@color/sp_chartreuse_pare</item>
         <item>@color/sp_shoubu</item>
         <item>@color/sp_shoubu_pare</item>
+    </array>
+
+    <array name="main_right_menu_color">
+        <item>@color/ma_orange_200</item>
+        <item>@color/ma_light_blue_200</item>
+        <item>@color/ma_light_green_200</item>
     </array>
 </resources>

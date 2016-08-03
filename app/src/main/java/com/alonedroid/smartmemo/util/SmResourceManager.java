@@ -11,7 +11,23 @@ public class SmResourceManager {
         return SmApplication.resources.getStringArray(R.array.main_left_menu);
     }
 
+    public static String[] getMainRightMenuInput() {
+        return SmApplication.resources.getStringArray(R.array.main_right_menu_input);
+    }
+
+    public static String[] getMainRightMenuClock() {
+        return SmApplication.resources.getStringArray(R.array.main_right_menu_clock);
+    }
+
+    public static String[] getMainRightMenuSetting() {
+        return SmApplication.resources.getStringArray(R.array.main_right_menu_setting);
+    }
+
     public static TypedArray getMainMenuColor() {
         return SmApplication.resources.obtainTypedArray(R.array.main_left_menu_color);
+    }
+
+    public static TypedArray getMainMenuRightColor() {
+        return SmApplication.resources.obtainTypedArray(R.array.main_right_menu_color);
     }
 }

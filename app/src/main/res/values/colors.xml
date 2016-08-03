@@ -50,6 +50,9 @@
     <color name="sp_kouji_pare">#3d8e75</color>
     <color name="sp_terracotta">#7c2f4f</color>
     <color name="sp_terracotta_pare">#06643d</color>
+    <color name="ma_light_green_200">#C5E1A5</color>
+    <color name="ma_light_blue_200">#81D4FA</color>
+    <color name="ma_orange_200">#FFCC80</color>
     <drawable name="sm_translucent">#23232323</drawable>
     <drawable name="sm_translucent2">#fefe00</drawable>
 </resources>
