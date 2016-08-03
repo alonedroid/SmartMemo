@@ -1,6 +1,8 @@
 package com.alonedroid.smartmemo;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -9,11 +11,15 @@ public class SmApplication extends Application {
 
     private static final String PREFIX = SmApplication.class.getSimpleName();
     private static FirebaseAnalytics mAnalytics;
+    public static Resources resources;
+    public static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+        context = getApplicationContext();
+        resources = getResources();
         sendLog("app", "start");
     }
 
