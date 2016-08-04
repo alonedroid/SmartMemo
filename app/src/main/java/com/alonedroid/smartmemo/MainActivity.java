@@ -7,11 +7,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.alonedroid.smartmemo.dao.info.SmMemoInfo;
 import com.alonedroid.smartmemo.databinding.ActivityMainBinding;
 import com.alonedroid.smartmemo.util.SmNotification;
 import com.alonedroid.smartmemo.util.SmResourceManager;
 import com.alonedroid.smartmemo.util.SmViewPlant;
+
+import java.util.Date;
+
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,17 +29,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         init();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        SmNotification.notifyInputMemoNotification(getApplicationContext());
+        test();
     }
 
     private void init() {
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         assembleLeftMenu();
         hideLeftMenuShadow(0);
     }
@@ -51,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void clickLeftMenu(int index) {
         hideLeftMenuShadow(index);
+        select();
     }
 
     private void hideLeftMenuShadow(int index) {
@@ -73,5 +82,45 @@ public class MainActivity extends AppCompatActivity {
                 mBinding.mainLeftMenuShadow3.setVisibility(View.INVISIBLE);
                 break;
         }
+    }
+
+    private void test() {
+        SmNotification.notifyInputMemoNotification(getApplicationContext());
+        insert();
+    }
+
+    private void insert() {
+        final Realm realm = Realm.getDefaultInstance();
+        try {
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    SmMemoInfo memo = new SmMemoInfo();
+                    memo.setId(1);
+                    memo.setMemo("test");
+                    memo.setTag("");
+                    memo.setCreateDate(new Date());
+                    memo.setUpdateDate(new Date());
+                    realm.copyToRealmOrUpdate(memo);
+                }
+            });
+        } finally {
+            // getしたらcloseする
+            realm.close();
+        }
+    }
+
+    private void select() {
+        Realm realm = Realm.getDefaultInstance();
+
+        // Build the query looking at all users:
+        RealmQuery<SmMemoInfo> query = realm.where(SmMemoInfo.class);
+
+        // Execute the query:
+        RealmResults<SmMemoInfo> result1 = query.findAll();
+
+        Toast.makeText(this, result1.get(0).getMemo() + " だよ", Toast.LENGTH_SHORT).show();
+
+        realm.close();
     }
 }

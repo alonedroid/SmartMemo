@@ -21,7 +21,7 @@
 
         <!-- サブActivity -->
         <activity
-            android:name=".feature.memo.input.SmInputActivity"
+            android:name=".feature.memo.input.SmMemoInputActivity"
             android:theme="@style/TranslucentTheme"
             />
 

@@ -6,6 +6,12 @@
         <item>設\n定</item>
     </string-array>
 
+    <string-array name="main_right_menu_list">
+        <item>メモ一覧</item>
+        <item>予定一覧</item>
+        <item>記録一覧</item>
+    </string-array>
+
     <string-array name="main_right_menu_input">
         <item>メモ入力</item>
         <item>予定入力</item>

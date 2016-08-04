@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.alonedroid.smartmemo.R;
 
-public class SmInputActivity extends AppCompatActivity {
+public class SmMemoInputActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

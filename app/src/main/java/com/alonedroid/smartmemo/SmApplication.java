@@ -7,6 +7,9 @@ import android.util.Log;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class SmApplication extends Application {
 
     private static final String PREFIX = SmApplication.class.getSimpleName();
@@ -20,6 +23,7 @@ public class SmApplication extends Application {
         mAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
         context = getApplicationContext();
         resources = getResources();
+        init();
         sendLog("app", "start");
     }
 
@@ -36,5 +40,11 @@ public class SmApplication extends Application {
 
     public static void sendLog() {
         sendLog("method", new Throwable().getStackTrace()[1].getMethodName());
+    }
+
+    private void init(){
+        // Realm
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).build();
+        Realm.setDefaultConfiguration(realmConfiguration);
     }
 }

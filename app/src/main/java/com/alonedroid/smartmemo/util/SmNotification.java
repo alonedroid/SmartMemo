@@ -11,7 +11,7 @@ import android.widget.RemoteViews;
 
 import com.alonedroid.smartmemo.MainActivity;
 import com.alonedroid.smartmemo.R;
-import com.alonedroid.smartmemo.feature.memo.input.SmInputActivity;
+import com.alonedroid.smartmemo.feature.memo.input.SmMemoInputActivity;
 import com.alonedroid.smartmemo.service.SmMemoInputService;
 
 public class SmNotification {
@@ -35,7 +35,7 @@ public class SmNotification {
     public static void notifyInputMemoNotification(Context context) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setContentIntent(generateIntent(context, SmInputActivity.class));
+        builder.setContentIntent(generateIntent(context, SmMemoInputActivity.class));
 
         RemoteViews customView = new RemoteViews(context.getPackageName(), R.layout.notice_custom);
         customView.setImageViewResource(R.id.custom_main_image, R.mipmap.ic_launcher);
