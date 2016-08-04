@@ -27,15 +27,10 @@
             android:background="@color/sp_shoubu_pare"
             android:orientation="vertical"
             >
-            <com.alonedroid.smartmemo.ui.SmCardView
-                android:id="@+id/media_card_view"
+            <FrameLayout
+                android:id="@+id/main_right_menu_contents"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardElevation="4dp"
-                card_view:cardUseCompatPadding="true"
-                >
-            </com.alonedroid.smartmemo.ui.SmCardView>
+                android:layout_height="match_parent" />
             </LinearLayout>
 
         <LinearLayout

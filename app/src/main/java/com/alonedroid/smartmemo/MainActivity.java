@@ -4,6 +4,7 @@ import android.content.res.TypedArray;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,13 +12,17 @@ import android.widget.Toast;
 
 import com.alonedroid.smartmemo.dao.info.SmMemoInfo;
 import com.alonedroid.smartmemo.databinding.ActivityMainBinding;
+import com.alonedroid.smartmemo.feature.memo.list.SmMemoListFragment;
 import com.alonedroid.smartmemo.util.SmNotification;
 import com.alonedroid.smartmemo.util.SmResourceManager;
 import com.alonedroid.smartmemo.util.SmViewPlant;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmModel;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         assembleLeftMenu();
         hideLeftMenuShadow(0);
+        setRightContents(0);
     }
 
     private void assembleLeftMenu() {
@@ -102,6 +108,22 @@ public class MainActivity extends AppCompatActivity {
                     memo.setCreateDate(new Date());
                     memo.setUpdateDate(new Date());
                     realm.copyToRealmOrUpdate(memo);
+
+                    memo = new SmMemoInfo();
+                    memo.setId(2);
+                    memo.setMemo("test2");
+                    memo.setTag("");
+                    memo.setCreateDate(new Date());
+                    memo.setUpdateDate(new Date());
+                    realm.copyToRealmOrUpdate(memo);
+
+                    memo = new SmMemoInfo();
+                    memo.setId(3);
+                    memo.setMemo("test3");
+                    memo.setTag("");
+                    memo.setCreateDate(new Date());
+                    memo.setUpdateDate(new Date());
+                    realm.copyToRealmOrUpdate(memo);
                 }
             });
         } finally {
@@ -122,5 +144,20 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, result1.get(0).getMemo() + " だよ", Toast.LENGTH_SHORT).show();
 
         realm.close();
+    }
+
+    private void setRightContents(int index){
+        Fragment fragment;
+        switch (index) {
+            case 1:
+            default:
+                fragment = SmMemoListFragment.newInstance();
+                break;
+        }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_right_menu_contents, fragment)
+                .commit();
     }
 }
