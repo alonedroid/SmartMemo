@@ -5,10 +5,11 @@
 
         <ImageView
             android:id="@+id/memo_input_done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dimen_space_48dp"
+            android:layout_height="@dimen/dimen_space_48dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:background="@drawable/shape_rounded_corners_primary_2dp"
             android:src="@mipmap/ic_done_black_24dp"
             />
 

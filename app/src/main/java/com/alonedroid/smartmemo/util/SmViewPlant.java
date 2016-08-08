@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alonedroid.smartmemo.R;
@@ -53,5 +54,15 @@ public class SmViewPlant {
     public static LinearLayout.LayoutParams lpCard() {
         return new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
                 , SmApplication.resources.getDimensionPixelSize(R.dimen.dimen_space_48dp));
+    }
+
+    /**
+     * SmInputView用LinearLayout.LayoutParamsを生成して返す
+     *
+     * @return LinearLayout.LayoutParams
+     */
+    public static RelativeLayout.LayoutParams lpInput() {
+        return new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+                , ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 }

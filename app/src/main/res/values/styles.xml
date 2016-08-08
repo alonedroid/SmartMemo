@@ -9,7 +9,7 @@
     </style>
 
     <style name="TranslucentTheme" parent="AppTheme">
-        <!--<item name="android:windowBackground">@drawable/sm_translucent</item>-->
+        <item name="android:windowBackground">@drawable/sm_translucent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="windowNoTitle">true</item>

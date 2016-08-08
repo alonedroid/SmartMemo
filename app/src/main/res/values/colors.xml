@@ -53,6 +53,7 @@
     <color name="ma_light_green_200">#C5E1A5</color>
     <color name="ma_light_blue_200">#81D4FA</color>
     <color name="ma_orange_200">#FFCC80</color>
+    <color name="thin_white">#E0E0E0E0</color>
     <drawable name="sm_translucent">#23232323</drawable>
     <drawable name="sm_translucent2">#fefe00</drawable>
 </resources>
