@@ -1,20 +1,18 @@
 package com.alonedroid.smartmemo.ui;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.alonedroid.smartmemo.R;
+import com.alonedroid.smartmemo.dao.info.SmMemoDao;
+import com.alonedroid.smartmemo.databinding.ViewMemoInputBinding;
 
 public class SmInputView extends RelativeLayout {
 
-    private ImageView mSmviDone;
-    private EditText mSmviText;
+    private ViewMemoInputBinding mBinding;
 
     public SmInputView(Context context) {
         this(context, null);
@@ -26,14 +24,21 @@ public class SmInputView extends RelativeLayout {
 
     public SmInputView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflate(context);
+        mBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.view_memo_input, this, true);
+        init();
     }
 
-    private void inflate(Context context) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View root = inflater.inflate(R.layout.view_input, this);
+    private void init() {
+        setClickListener();
+    }
 
-        mSmviDone = (ImageView) root.findViewById(R.id.smvi_done);
-        mSmviText = (EditText) root.findViewById(R.id.smvi_text);
+    private void setClickListener() {
+        mBinding.memoInputDone.setOnClickListener(v -> saveMemo());
+    }
+
+    private void saveMemo() {
+        SmMemoDao dao = new SmMemoDao();
+        dao.insertMemo(mBinding.memoInputText.getText().toString(), "");
+        mBinding.memoInputText.setText("");
     }
 }

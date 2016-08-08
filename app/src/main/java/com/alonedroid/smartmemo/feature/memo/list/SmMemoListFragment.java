@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,9 @@ import com.alonedroid.smartmemo.R;
 import com.alonedroid.smartmemo.dao.info.SmMemoDao;
 import com.alonedroid.smartmemo.dao.info.SmMemoInfo;
 import com.alonedroid.smartmemo.databinding.FragmentMemoListBinding;
+import com.alonedroid.smartmemo.util.SmViewPlant;
 
-import io.realm.RealmResults;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.CompositeSubscription;
 
 public class SmMemoListFragment extends Fragment {
@@ -44,19 +44,18 @@ public class SmMemoListFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        mMemoDao.close();
         mCompositeSubscription.unsubscribe();
     }
 
     private void init() {
         mCompositeSubscription.add(mMemoDao.fetchAllMemo()
                 .filter(result -> result != null)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::setDummyData));
     }
 
-    private void setDummyData(RealmResults<SmMemoInfo> result) {
-        for (int i = 0; i < result.size(); i++) {
-            Log.d("dummy", result.get(i).getMemo());
-        }
+    private void setDummyData(SmMemoInfo info) {
+        mBinding.memoListContents.addView(SmViewPlant.shipMemoCard(info.getMemo())
+                , SmViewPlant.lpCard());
     }
 }

@@ -16,7 +16,7 @@ public class SmMemoInputService extends Service {
 
     private static final int EXTRA_NONE = 0;
     public static final String EXTRA_LAYOUT = "extraLayout";
-    public static final int LAYOUT_MEMO = R.layout.view_input;
+    public static final int LAYOUT_MEMO = R.layout.view_memo_input;
 
     public static void startService(final Context context, @LayoutRes int layout) {
         final Intent intent = new Intent(context, SmMemoInputService.class);

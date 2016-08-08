@@ -37,9 +37,9 @@ public class SmNotification {
         builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setContentIntent(generateIntent(context, SmMemoInputActivity.class));
 
-        RemoteViews customView = new RemoteViews(context.getPackageName(), R.layout.notice_custom);
-        customView.setImageViewResource(R.id.custom_main_image, R.mipmap.ic_launcher);
-        builder.setContent(customView);
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.notice_custom);
+        remoteViews.setImageViewResource(R.id.custom_main_image, R.mipmap.ic_launcher);
+        builder.setContent(remoteViews);
 
         Notification notification = builder.build();
         notification.flags = Notification.FLAG_ONGOING_EVENT;

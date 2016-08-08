@@ -1,5 +1,8 @@
 package com.alonedroid.smartmemo.dao.info;
 
+import android.text.format.DateFormat;
+
+import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -11,8 +14,20 @@ public class SmMemoInfo extends RealmObject {
     private long id;
     private String memo;
     private String tag;
-    private Date createDate;
-    private Date updateDate;
+    private Date createdAt;
+    private Date updatedAt;
+
+    public SmMemoInfo() {
+
+    }
+
+    public SmMemoInfo(String _memo, String _tag) {
+        this.id = Long.valueOf(String.valueOf(DateFormat.format("yyyyMMddkkmmss", Calendar.getInstance())));
+        this.memo = _memo;
+        this.tag = _tag;
+        this.createdAt = new Date();
+        this.updatedAt = new Date();
+    }
 
     public long getId() {
         return id;
@@ -41,21 +56,30 @@ public class SmMemoInfo extends RealmObject {
         return this;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public SmMemoInfo setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public SmMemoInfo setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
         return this;
     }
 
-    public Date getUpdateDate() {
-        return updateDate;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public SmMemoInfo setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public SmMemoInfo setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
         return this;
+    }
+
+    public SmMemoInfo clone(){
+        return new SmMemoInfo()
+                .setId(this.id)
+                .setMemo(this.memo)
+                .setTag(this.tag)
+                .setCreatedAt(this.createdAt)
+                .setUpdatedAt(this.updatedAt);
     }
 }

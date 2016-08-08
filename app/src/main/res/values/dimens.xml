@@ -15,4 +15,7 @@
     <dimen name="dimen_space_80dp">80dp</dimen>
     <dimen name="dimen_space_88dp">88dp</dimen>
     <dimen name="dimen_zpos_s">88dp</dimen>
+
+    <!-- SmCardView -->
+    <dimen name="card_elevation">4dp</dimen>
 </resources>

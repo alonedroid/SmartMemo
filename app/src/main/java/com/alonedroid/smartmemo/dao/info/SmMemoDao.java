@@ -2,36 +2,33 @@ package com.alonedroid.smartmemo.dao.info;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
-import io.realm.RealmResults;
-import rx.functions.Action0;
-import rx.subjects.BehaviorSubject;
+import rx.Observable;
+import rx.functions.Action2;
+import rx.subjects.ReplaySubject;
 
 public class SmMemoDao {
 
-    private Realm mRealm;
-    private RealmQuery<SmMemoInfo> mQuery;
-
-    public SmMemoDao() {
-        mRealm = Realm.getDefaultInstance();
-        mQuery = mRealm.where(SmMemoInfo.class);
-    }
-
-    public BehaviorSubject<RealmResults<SmMemoInfo>> fetchAllMemo() {
-        final BehaviorSubject<RealmResults<SmMemoInfo>> subject = BehaviorSubject.create();
-        async(() -> subject.onNext(mQuery.findAll()));
+    public ReplaySubject<SmMemoInfo> fetchAllMemo() {
+        final ReplaySubject<SmMemoInfo> subject = ReplaySubject.create();
+        async((_realm, _query) -> Observable.from(_query.findAll()).subscribe(info -> {
+            subject.onNext(info.clone());
+        }));
         return subject;
     }
 
-    public void close() {
-        if (mRealm == null) return;
-        mRealm.close();
+    public void insertMemo(final String memo, final String tag) {
+        async((_realm, _where) ->
+                _realm.executeTransaction(realm -> {
+                    SmMemoInfo info = new SmMemoInfo(memo, tag);
+                    realm.copyToRealmOrUpdate(info);
+                }));
     }
 
-    public boolean isClosed() {
-        return (mRealm == null || mRealm.isClosed());
-    }
-
-    private void async(Action0 action) {
-        new Thread(action::call).start();
+    private void async(Action2<Realm, RealmQuery<SmMemoInfo>> action) {
+        new Thread(() -> {
+            Realm realm = Realm.getDefaultInstance();
+            action.call(realm, realm.where(SmMemoInfo.class));
+            realm.close();
+        }).start();
     }
 }
