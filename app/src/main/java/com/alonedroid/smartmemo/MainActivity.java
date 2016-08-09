@@ -4,13 +4,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.alonedroid.smartmemo.feature.memo.detail.SmMemoDetailFragment;
 import com.alonedroid.smartmemo.feature.memo.input.SmMemoInputFragment;
 import com.alonedroid.smartmemo.feature.memo.list.SmMemoListFragment;
 import com.alonedroid.smartmemo.feature.menu.SmMainLeftMenuFragment;
-import com.alonedroid.smartmemo.util.SmNotification;
+import com.alonedroid.smartmemo.feature.settings.SmSettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,19 +22,9 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        test();
-    }
-
     private void init() {
         setLeftContents();
         setRightContents(0);
-    }
-
-    private void test() {
-        SmNotification.notifyInputMemoNotification(getApplicationContext());
     }
 
     private void setLeftContents() {
@@ -59,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    private Fragment getRightMenuFragment(int index){
+    private Fragment getRightMenuFragment(int index) {
         switch (index) {
             case 0:
                 return getListFragment();
             case 1:
                 return getInputFragment();
+            case 2:
+                return getSettingsFragment();
             default:
                 return getListFragment();
         }
@@ -78,8 +69,12 @@ public class MainActivity extends AppCompatActivity {
         return fragment;
     }
 
-    private Fragment getInputFragment(){
+    private Fragment getInputFragment() {
         return SmMemoInputFragment.newInstance();
+    }
+
+    private Fragment getSettingsFragment() {
+        return SmSettingsFragment.newInstance();
     }
 
     private void showDetailFragment(long id) {

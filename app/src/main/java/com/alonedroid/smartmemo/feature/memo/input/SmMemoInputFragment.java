@@ -17,6 +17,7 @@ public class SmMemoInputFragment extends Fragment {
         return new SmMemoInputFragment();
     }
 
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return new SmInputView(getContext());
     }

@@ -42,10 +42,15 @@ public class SmNotification {
         builder.setContent(remoteViews);
 
         Notification notification = builder.build();
-        notification.flags = Notification.FLAG_ONGOING_EVENT;
+        notification.flags = Notification.FLAG_NO_CLEAR;
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(context);
-        manager.notify(NOTIFICATION_CUSTOM_LAYOUT_ID, builder.build());
+        manager.notify(NOTIFICATION_CUSTOM_LAYOUT_ID, notification);
+    }
+
+    public static void cancelInputMemoNotification(Context context) {
+        NotificationManagerCompat manager = NotificationManagerCompat.from(context);
+        manager.cancel(NOTIFICATION_CUSTOM_LAYOUT_ID);
     }
 
     private static PendingIntent generateIntent(Context context, Class intentClass) {

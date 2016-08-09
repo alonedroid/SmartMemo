@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/sp_shoubu_13"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        >
+
+        <ImageView
+            android:id="@+id/settings_image"
+            android:layout_width="@dimen/dimen_space_48dp"
+            android:layout_height="@dimen/dimen_space_48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <ToggleButton
+            android:id="@+id/settings_toggle"
+            android:layout_width="@dimen/dimen_space_56dp"
+            android:layout_height="@dimen/dimen_space_48dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:id="@+id/settings_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_space_48dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/settings_toggle"
+            android:layout_toRightOf="@id/settings_image"
+            android:gravity="center|left"
+            android:text="@string/settings_text_str"
+            android:textColor="@color/thin_black"
+            />
+    </RelativeLayout>
+</layout>
