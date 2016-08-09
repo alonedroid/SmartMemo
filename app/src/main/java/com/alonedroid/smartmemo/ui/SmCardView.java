@@ -2,6 +2,8 @@ package com.alonedroid.smartmemo.ui;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -28,5 +30,13 @@ public class SmCardView extends CardView {
 
     public void setMemoText(String memo) {
         mBinding.cardMemo.setText(memo);
+    }
+
+    public void markDelete(boolean isDelete) {
+        if (isDelete) {
+            setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.grey_600));
+        } else {
+            setCardBackgroundColor(Color.WHITE);
+        }
     }
 }

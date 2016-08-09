@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <merge>
+
+        <EditText
+            android:id="@+id/memo_detail_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:hint="メモを入力"
+            />
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_space_24dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/memo_detail_close"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#f00"
+                />
+
+            <TextView
+                android:id="@+id/memo_detail_delete"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#0f0"
+                />
+
+            <TextView
+                android:id="@+id/memo_detail_save"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#00f"
+                />
+        </LinearLayout>
+    </merge>
+</layout>

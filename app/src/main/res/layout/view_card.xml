@@ -6,6 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/dimen_space_4dp"
-        android:textColor="@color/black"
+        android:textColor="@color/thin_black"
         />
 </layout>

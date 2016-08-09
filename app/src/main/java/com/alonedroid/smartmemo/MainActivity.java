@@ -6,10 +6,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.alonedroid.smartmemo.databinding.ActivityMainBinding;
+import com.alonedroid.smartmemo.feature.memo.detail.SmMemoDetailFragment;
 import com.alonedroid.smartmemo.feature.memo.list.SmMemoListFragment;
 import com.alonedroid.smartmemo.util.SmNotification;
 import com.alonedroid.smartmemo.util.SmResourceManager;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mBinding.mainLeftMenuShadow0.setVisibility(View.VISIBLE);
         mBinding.mainLeftMenuShadow1.setVisibility(View.VISIBLE);
         mBinding.mainLeftMenuShadow2.setVisibility(View.VISIBLE);
-        mBinding.mainLeftMenuShadow3.setVisibility(View.VISIBLE);
+//        mBinding.mainLeftMenuShadow3.setVisibility(View.VISIBLE);
 
         switch (index) {
             case 0:
@@ -72,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
             case 2:
                 mBinding.mainLeftMenuShadow2.setVisibility(View.INVISIBLE);
                 break;
-            case 3:
-                mBinding.mainLeftMenuShadow3.setVisibility(View.INVISIBLE);
-                break;
+//            case 3:
+//                mBinding.mainLeftMenuShadow3.setVisibility(View.INVISIBLE);
+//                break;
         }
     }
 
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         switch (index) {
             case 1:
             default:
-                fragment = SmMemoListFragment.newInstance();
+                fragment = getListFragment();
                 break;
         }
 
@@ -95,5 +97,18 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.main_right_menu_contents, fragment)
                 .commit();
+    }
+
+    private Fragment getListFragment() {
+        SmMemoListFragment fragment = SmMemoListFragment.newInstance();
+        fragment.getSelectId()
+                .subscribe(this::showDetailFragment);
+
+        return fragment;
+    }
+
+    private void showDetailFragment(long id) {
+        SmMemoDetailFragment.newInstance(id)
+                .show(getSupportFragmentManager(), SmMemoDetailFragment.DIALOG_ID);
     }
 }

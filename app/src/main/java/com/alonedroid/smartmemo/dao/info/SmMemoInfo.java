@@ -10,6 +10,9 @@ import io.realm.annotations.PrimaryKey;
 
 public class SmMemoInfo extends RealmObject {
 
+    public static final String FIELD_ID = "id";
+    public static final String FIELD_CREATED_AT = "createdAt";
+
     @PrimaryKey
     private long id;
     private String memo;

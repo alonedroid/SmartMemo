@@ -71,6 +71,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/background_shadow"
+                android:visibility="gone"
                 />
         </LinearLayout>
     </RelativeLayout>

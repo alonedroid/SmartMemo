@@ -8,6 +8,7 @@
     <color name="pink_4">#EC407A</color>
     <color name="alpha">#00000000</color>
     <color name="black">#000000</color>
+    <color name="thin_black">#E0232323</color>
     <color name="brown_500">#795548</color>
     <color name="brown_600">#6D4C41</color>
     <color name="white_300">#E0E0E0</color>

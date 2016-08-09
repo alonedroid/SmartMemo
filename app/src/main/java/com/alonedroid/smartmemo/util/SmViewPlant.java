@@ -53,7 +53,7 @@ public class SmViewPlant {
      */
     public static LinearLayout.LayoutParams lpCard() {
         return new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-                , SmApplication.resources.getDimensionPixelSize(R.dimen.dimen_space_48dp));
+                , SmApplication.resources.getDimensionPixelSize(R.dimen.dimen_space_64dp));
     }
 
     /**
