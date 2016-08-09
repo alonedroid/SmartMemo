@@ -55,6 +55,10 @@
     <color name="ma_light_blue_200">#81D4FA</color>
     <color name="ma_orange_200">#FFCC80</color>
     <color name="thin_white">#E0E0E0E0</color>
+    <color name="sp_chartreuse_13">#d8ecc1</color>
+    <color name="sp_chartreuse_pare_13">#edd8e6</color>
+    <color name="sp_shoubu_13">#d2ccec</color>
+    <color name="sp_shoubu_pare_13">#faefe0</color>
     <drawable name="sm_translucent">#23232323</drawable>
     <drawable name="sm_translucent2">#fefe00</drawable>
 </resources>

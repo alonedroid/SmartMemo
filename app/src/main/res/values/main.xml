@@ -35,8 +35,9 @@
     </array>
 
     <array name="main_right_menu_color">
-        <item>@color/ma_orange_200</item>
-        <item>@color/ma_light_blue_200</item>
-        <item>@color/ma_light_green_200</item>
+        <item>@color/sp_chartreuse_13</item>
+        <item>@color/sp_chartreuse_pare_13</item>
+        <item>@color/sp_shoubu_13</item>
+        <item>@color/sp_shoubu_pare_13</item>
     </array>
 </resources>

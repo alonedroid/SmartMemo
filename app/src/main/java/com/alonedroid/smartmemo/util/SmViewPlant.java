@@ -26,6 +26,12 @@ public class SmViewPlant {
         return tv;
     }
 
+    public static View shipMainLeftMenuShadow() {
+        View v = new View(SmApplication.context);
+        v.setBackgroundResource(R.drawable.background_shadow);
+        return v;
+    }
+
     public static SmCardView shipMemoCard(String text) {
         SmCardView cv = new SmCardView(SmApplication.context);
         cv.setMemoText(text);
