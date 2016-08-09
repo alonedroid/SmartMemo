@@ -4,8 +4,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.alonedroid.smartmemo.feature.memo.detail.SmMemoDetailFragment;
+import com.alonedroid.smartmemo.feature.memo.input.SmMemoInputFragment;
 import com.alonedroid.smartmemo.feature.memo.list.SmMemoListFragment;
 import com.alonedroid.smartmemo.feature.menu.SmMainLeftMenuFragment;
 import com.alonedroid.smartmemo.util.SmNotification;
@@ -51,18 +53,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setRightContents(int index) {
-        Fragment fragment;
-        switch (index) {
-            case 1:
-            default:
-                fragment = getListFragment();
-                break;
-        }
-
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_right_menu_contents, fragment)
+                .replace(R.id.main_right_menu_contents, getRightMenuFragment(index))
                 .commit();
+    }
+
+    private Fragment getRightMenuFragment(int index){
+        switch (index) {
+            case 0:
+                return getListFragment();
+            case 1:
+                return getInputFragment();
+            default:
+                return getListFragment();
+        }
     }
 
     private Fragment getListFragment() {
@@ -71,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(this::showDetailFragment);
 
         return fragment;
+    }
+
+    private Fragment getInputFragment(){
+        return SmMemoInputFragment.newInstance();
     }
 
     private void showDetailFragment(long id) {

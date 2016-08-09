@@ -54,6 +54,7 @@ public class SmMainLeftMenuFragment extends Fragment {
     }
 
     private void clickLeftMenu(int index) {
+        mSelectedMenu.onNext(index);
         setBackgroundColor(index);
         hideLeftMenuShadow(index);
     }
