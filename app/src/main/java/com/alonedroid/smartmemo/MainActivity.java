@@ -13,6 +13,8 @@ import com.alonedroid.smartmemo.feature.memo.list.SmMemoListFragment;
 import com.alonedroid.smartmemo.feature.menu.SmMainLeftMenuFragment;
 import com.alonedroid.smartmemo.feature.option.SmCopyrightDialogFragment;
 import com.alonedroid.smartmemo.feature.settings.SmSettingsFragment;
+import com.alonedroid.smartmemo.feature.tutorial.SmTutorialModel;
+import com.alonedroid.smartmemo.util.SmKVSData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         setLeftContents();
         setRightContents(0);
+        setTutorial();
     }
 
     private void setLeftContents() {
@@ -104,5 +107,15 @@ public class MainActivity extends AppCompatActivity {
     private void showCopyrightFragment() {
         SmCopyrightDialogFragment.newInstance()
                 .show(getSupportFragmentManager(), SmCopyrightDialogFragment.DIALOG_ID);
+    }
+
+    private void setTutorial(){
+        if(SmKVSData.isFirstTimeTutorial1()) SmTutorialModel.putTutorialMemo1();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
     }
 }

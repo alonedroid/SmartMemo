@@ -30,4 +30,8 @@ public class SmResourceManager {
     public static TypedArray getMainMenuRightColor() {
         return SmApplication.resources.obtainTypedArray(R.array.main_right_menu_color);
     }
+
+    public static String getTutorialMemo1(){
+        return SmApplication.resources.getString(R.string.tutorial_memo_1);
+    }
 }

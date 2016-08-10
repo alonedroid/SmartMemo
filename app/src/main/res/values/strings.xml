@@ -10,4 +10,7 @@
     <!-- アプリケーション -->
     <string name="settings_text_str">メモ入力へのショートカットを通知領域に表示する</string>
     <string name="menu_settings_copyright_str">著作権表示</string>
+
+    <!-- チュートリアル -->
+    <string name="tutorial_memo_1">メモは長押しで削除予約でき、\n次回表示時に削除されます。</string>
 </resources>
