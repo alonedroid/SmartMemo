@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.alonedroid.smartmemo.R;
 import com.alonedroid.smartmemo.databinding.FragmentSettingsBinding;
+import com.alonedroid.smartmemo.util.SmKVSData;
 import com.alonedroid.smartmemo.util.SmNotification;
 
 public class SmSettingsFragment extends Fragment{
@@ -30,6 +31,7 @@ public class SmSettingsFragment extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
+        mBinding.settingsToggle.setChecked(SmKVSData.getInputMemoNotificationFlg());
         mBinding.settingsToggle.setOnCheckedChangeListener((v, isChecked) -> createShortCut(isChecked));
     }
 
@@ -39,5 +41,7 @@ public class SmSettingsFragment extends Fragment{
         }else{
             SmNotification.cancelInputMemoNotification(getContext());
         }
+
+        SmKVSData.putInputMemoNotificationFlg(isChecked);
     }
 }

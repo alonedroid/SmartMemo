@@ -1,5 +1,7 @@
 package com.alonedroid.smartmemo.dao.info;
 
+import android.util.Log;
+
 import java.util.HashSet;
 
 import io.realm.Realm;
@@ -62,11 +64,17 @@ public class SmMemoDao {
     }
 
     public void removeMemo(final HashSet<Long> ids) {
+        if(ids==null) {
+            Log.d("itinoue", "null");
+            return;
+        }
         async((_realm, _query) ->
                 _realm.executeTransaction(realm -> {
-                    for (Long id : ids) {
-                        _query.equalTo(SmMemoInfo.FIELD_ID, id).findFirst().deleteFromRealm();
-                    }
+                    _query.equalTo(SmMemoInfo.FIELD_ID, 0); // ダミー
+                    Observable.from(ids)
+                            .subscribe(id -> _query.or().equalTo(SmMemoInfo.FIELD_ID, id));
+                    Observable.from(_query.findAll())
+                            .subscribe(info -> info.deleteFromRealm());
                 }));
     }
 

@@ -4,11 +4,14 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.alonedroid.smartmemo.feature.memo.detail.SmMemoDetailFragment;
+import com.alonedroid.smartmemo.feature.memo.detail.SmMemoDetailDialogFragment;
 import com.alonedroid.smartmemo.feature.memo.input.SmMemoInputFragment;
 import com.alonedroid.smartmemo.feature.memo.list.SmMemoListFragment;
 import com.alonedroid.smartmemo.feature.menu.SmMainLeftMenuFragment;
+import com.alonedroid.smartmemo.feature.option.SmCopyrightDialogFragment;
 import com.alonedroid.smartmemo.feature.settings.SmSettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -78,7 +81,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showDetailFragment(long id) {
-        SmMemoDetailFragment.newInstance(id)
-                .show(getSupportFragmentManager(), SmMemoDetailFragment.DIALOG_ID);
+        SmMemoDetailDialogFragment.newInstance(id)
+                .show(getSupportFragmentManager(), SmMemoDetailDialogFragment.DIALOG_ID);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_settings_copyright:
+                showCopyrightFragment();
+                break;
+        }
+        return true;
+    }
+
+    private void showCopyrightFragment() {
+        SmCopyrightDialogFragment.newInstance()
+                .show(getSupportFragmentManager(), SmCopyrightDialogFragment.DIALOG_ID);
     }
 }

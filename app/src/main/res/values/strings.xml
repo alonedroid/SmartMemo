@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name_en">yomogi</string>
     <string name="app_name">いつでもよもぎメモ</string>
 
     <!-- メモ詳細ダイアログ -->
@@ -8,4 +9,5 @@
 
     <!-- アプリケーション -->
     <string name="settings_text_str">メモ入力へのショートカットを通知領域に表示する</string>
+    <string name="menu_settings_copyright_str">著作権表示</string>
 </resources>

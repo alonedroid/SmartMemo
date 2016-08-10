@@ -2,6 +2,7 @@ package com.alonedroid.smartmemo;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.util.Log;
 
@@ -16,6 +17,7 @@ public class SmApplication extends Application {
     private static FirebaseAnalytics mAnalytics;
     public static Resources resources;
     public static Context context;
+    public static SharedPreferences sp;
 
     @Override
     public void onCreate() {
@@ -23,6 +25,7 @@ public class SmApplication extends Application {
         mAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
         context = getApplicationContext();
         resources = getResources();
+        sp = getSharedPreferences(getString(R.string.app_name_en), MODE_PRIVATE);
         init();
         sendLog("app", "start");
     }

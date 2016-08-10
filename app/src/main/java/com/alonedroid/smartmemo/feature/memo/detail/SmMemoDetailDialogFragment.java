@@ -12,15 +12,15 @@ import com.alonedroid.smartmemo.R;
 import com.alonedroid.smartmemo.dao.info.SmMemoDao;
 import com.alonedroid.smartmemo.databinding.DialogMemoDetailBinding;
 
-public class SmMemoDetailFragment extends DialogFragment {
+public class SmMemoDetailDialogFragment extends DialogFragment {
 
     public static final String DIALOG_ID = "memoDetail";
     private static final String ARG_MEMO_ID = "argMemoId";
     private DialogMemoDetailBinding mBinding;
     private long mMemoId;
 
-    public static SmMemoDetailFragment newInstance(long id) {
-        SmMemoDetailFragment fragment = new SmMemoDetailFragment();
+    public static SmMemoDetailDialogFragment newInstance(long id) {
+        SmMemoDetailDialogFragment fragment = new SmMemoDetailDialogFragment();
         Bundle args = new Bundle();
         args.putLong(ARG_MEMO_ID, id);
         fragment.setArguments(args);

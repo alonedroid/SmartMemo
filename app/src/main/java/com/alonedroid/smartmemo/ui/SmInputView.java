@@ -36,7 +36,6 @@ public class SmInputView extends RelativeLayout {
     }
 
     private void setOwnParam() {
-        setBackgroundColor(ContextCompat.getColor(getContext(), R.color.thin_white));
         int pad = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
         setPadding(pad, pad, pad, pad);
         setLayoutParams(SmViewPlant.lpInput());
