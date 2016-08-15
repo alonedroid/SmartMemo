@@ -55,6 +55,7 @@
     <color name="ma_light_blue_200">#81D4FA</color>
     <color name="ma_orange_200">#FFCC80</color>
     <color name="thin_white">#E0E0E0E0</color>
+    <color name="thin_white_ff">#B0FFFFFF</color>
     <color name="sp_chartreuse_13">#d8ecc1</color>
     <color name="sp_chartreuse_pare_13">#edd8e6</color>
     <color name="sp_shoubu_13">#d2ccec</color>

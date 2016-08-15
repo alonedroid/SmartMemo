@@ -25,14 +25,9 @@ public class SmSettingsFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
-        return mBinding.getRoot();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
         mBinding.settingsToggle.setChecked(SmKVSData.getInputMemoNotificationFlg());
         mBinding.settingsToggle.setOnCheckedChangeListener((v, isChecked) -> createShortCut(isChecked));
+        return mBinding.getRoot();
     }
 
     private void createShortCut(boolean isChecked){

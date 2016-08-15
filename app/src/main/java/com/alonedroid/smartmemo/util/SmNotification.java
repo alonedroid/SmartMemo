@@ -12,7 +12,6 @@ import android.widget.RemoteViews;
 import com.alonedroid.smartmemo.MainActivity;
 import com.alonedroid.smartmemo.R;
 import com.alonedroid.smartmemo.feature.memo.input.SmMemoInputActivity;
-import com.alonedroid.smartmemo.service.SmMemoInputService;
 
 public class SmNotification {
 
@@ -55,7 +54,6 @@ public class SmNotification {
 
     private static PendingIntent generateIntent(Context context, Class intentClass) {
         Intent intent = new Intent(context, intentClass);
-        intent.putExtra(SmMemoInputService.EXTRA_LAYOUT, SmMemoInputService.LAYOUT_MEMO);
         return PendingIntent.getActivity(
                 context, MainActivity.REQUEST_CODE_MAIN_ACTIVITY, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }

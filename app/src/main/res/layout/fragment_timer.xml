@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/sp_shoubu_13"
+        android:padding="@dimen/dimen_space_16dp"
+        >
+
+        <ImageView
+            android:id="@+id/timer_count_down"
+            android:layout_width="@dimen/dimen_space_48dp"
+            android:layout_height="@dimen/dimen_space_48dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/shape_rounded_corners_primary_2dp"
+            android:src="@mipmap/ic_done_black_24dp"
+            />
+
+        <EditText
+            android:id="@+id/memo_input_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/timer_count_down"
+            android:hint="メモを入力"
+            />
+
+        <View
+            android:id="@+id/divide"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/timer_count_down"
+            android:layout_margin="@dimen/dimen_space_16dp"
+            android:background="@color/thin_black"
+            />
+
+        <TextView
+            android:id="@+id/timer_count_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_space_48dp"
+            android:layout_below="@id/divide"
+            android:background="@drawable/shape_rounded_corners_primary_2dp"
+            android:gravity="center"
+            android:text="カウントアップ"
+            />
+
+    </RelativeLayout>
+</layout>

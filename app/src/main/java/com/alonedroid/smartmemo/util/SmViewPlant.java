@@ -71,4 +71,16 @@ public class SmViewPlant {
         return new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
                 , ViewGroup.LayoutParams.WRAP_CONTENT);
     }
+
+    /**
+     * SmCountDownTimerView用LinearLayout.LayoutParamsを生成して返す
+     *
+     * @return LinearLayout.LayoutParams
+     */
+    public static LinearLayout.LayoutParams lpTimer() {
+        return new LinearLayout.LayoutParams(
+                SmApplication.resources.getDimensionPixelSize(R.dimen.dimen_space_88dp)
+                , SmApplication.resources.getDimensionPixelSize(R.dimen.dimen_space_88dp)
+        );
+    }
 }

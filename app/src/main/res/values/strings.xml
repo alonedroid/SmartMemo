@@ -7,6 +7,9 @@
     <string name="dialog_memo_detail_positive">保存</string>
     <string name="dialog_memo_detail_negative">キャンセル</string>
 
+    <!-- 計測ダイアログ -->
+    <string name="timer_default_time">-- : --</string>
+
     <!-- アプリケーション -->
     <string name="settings_text_str">メモ入力へのショートカットを通知領域に表示する</string>
     <string name="menu_settings_copyright_str">著作権表示</string>

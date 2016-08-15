@@ -13,6 +13,7 @@ import com.alonedroid.smartmemo.feature.memo.list.SmMemoListFragment;
 import com.alonedroid.smartmemo.feature.menu.SmMainLeftMenuFragment;
 import com.alonedroid.smartmemo.feature.option.SmCopyrightDialogFragment;
 import com.alonedroid.smartmemo.feature.settings.SmSettingsFragment;
+import com.alonedroid.smartmemo.feature.timer.SmTimerFragment;
 import com.alonedroid.smartmemo.feature.tutorial.SmTutorialModel;
 import com.alonedroid.smartmemo.util.SmKVSData;
 
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 return getInputFragment();
             case 2:
+                return getTimerFragment();
+            case 3:
                 return getSettingsFragment();
             default:
                 return getListFragment();
@@ -73,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(this::showDetailFragment);
 
         return fragment;
+    }
+
+    private Fragment getTimerFragment() {
+        return SmTimerFragment.newInstance();
     }
 
     private Fragment getInputFragment() {
@@ -109,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
                 .show(getSupportFragmentManager(), SmCopyrightDialogFragment.DIALOG_ID);
     }
 
-    private void setTutorial(){
-        if(SmKVSData.isFirstTimeTutorial1()) SmTutorialModel.putTutorialMemo1();
+    private void setTutorial() {
+        if (SmKVSData.isFirstTimeTutorial1()) SmTutorialModel.putTutorialMemo1();
     }
 
     @Override

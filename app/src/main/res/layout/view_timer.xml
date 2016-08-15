@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <merge>
+
+        <ImageView
+            android:id="@+id/timer_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/yomogi1"
+            />
+
+        <TextView
+            android:id="@+id/timer_time"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dimen_space_4dp"
+            android:text="@string/timer_default_time"
+            android:textColor="@color/thin_black"
+            />
+    </merge>
+</layout>

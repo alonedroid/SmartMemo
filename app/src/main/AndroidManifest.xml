@@ -26,7 +26,7 @@
             />
 
         <!-- サービス群 -->
-        <service android:name=".service.SmMemoInputService"/>
+        <service android:name=".service.SmCountUpTimerService"/>
 
         <!-- レシーバ群 -->
         <receiver android:name=".receiver.SmReceiver">
