@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.SparseArray;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.alonedroid.smartmemo.ui.SmTimerView;
+import com.alonedroid.smartmemo.util.SmViewPlant;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -23,13 +25,23 @@ import rx.android.schedulers.AndroidSchedulers;
 
 abstract public class SmTimerService extends Service {
 
-    private SmTimerView mFloatingView;
+    private SparseArray<SmTimerView> mFloatingViews = new SparseArray<>();
+    private View mLatestTapedView;
     private WindowManager mWindowManager;
     private WindowManager.LayoutParams mParams;
     private GestureDetector mGestureDetector;
     private Point mSize = new Point();
 
     abstract protected void passedTime();
+
+    abstract protected boolean isUse();
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        setParams();
+        startCount();
+    }
 
     @Nullable
     @Override
@@ -39,16 +51,16 @@ abstract public class SmTimerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        setParams();
-        showView();
-        startCount();
+        if (isUse()) {
+            setViewParam();
+            addView();
+        }
         return START_NOT_STICKY;
     }
 
     private void setParams() {
-        setOnDoubleTouchListener();
+        setOnDoubleTapListener();
         setParamWindowSize();
-        setParamViewParam();
     }
 
     private void setParamWindowSize() {
@@ -62,7 +74,7 @@ abstract public class SmTimerService extends Service {
         }
     }
 
-    private void setParamViewParam() {
+    private void setViewParam() {
         mParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -74,13 +86,19 @@ abstract public class SmTimerService extends Service {
                 PixelFormat.TRANSLUCENT);
     }
 
-    private void showView() {
-        mFloatingView = new SmTimerView(getApplicationContext());
-        mFloatingView.setOnTouchListener(this::touch);
-        mWindowManager.addView(mFloatingView, mParams);
+    protected int addView() {
+        int id = SmViewPlant.generateID();
+        SmTimerView view = new SmTimerView(getApplicationContext());
+        view.setId(id);
+        mFloatingViews.put(id, view);
+        view.setOnTouchListener(this::touch);
+        mWindowManager.addView(view, mParams);
+
+        return id;
     }
 
     private boolean touch(View view, MotionEvent event) {
+        mLatestTapedView = view;
         mGestureDetector.onTouchEvent(event);
         if (MotionEvent.ACTION_MOVE != event.getAction()) return false;
 
@@ -96,31 +114,36 @@ abstract public class SmTimerService extends Service {
         mParams.y = centerY;
 
         // 移動した分を更新する
-        mWindowManager.updateViewLayout(mFloatingView, mParams);
+        mWindowManager.updateViewLayout(view, mParams);
 
         return false;
     }
 
-    private void setOnDoubleTouchListener() {
+    private void setOnDoubleTapListener() {
         mGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
-                mWindowManager.removeView(mFloatingView);
-                stopSelf();
+                removeTimer(mLatestTapedView);
                 return super.onDoubleTap(e);
             }
         });
     }
 
-    private void startCount(){
+    protected void removeTimer(View view) {
+        mWindowManager.removeView(view);
+        mFloatingViews.delete(view.getId());
+        if (mFloatingViews.size() == 0) stopSelf();
+    }
+
+    private void startCount() {
         Observable.interval(1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(t -> passedTime());
     }
 
-    protected void setTime(int seconds){
+    protected void setTime(int id, int seconds) {
         String time = String.format(Locale.JAPAN, "%1$02d", seconds / 60) + " : "
                 + String.format(Locale.JAPAN, "%1$02d", seconds % 60);
-        mFloatingView.setTimerTime(time);
+        mFloatingViews.get(id).setTimerTime(time);
     }
 }

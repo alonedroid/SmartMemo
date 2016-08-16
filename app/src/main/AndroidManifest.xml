@@ -27,6 +27,7 @@
 
         <!-- サービス群 -->
         <service android:name=".service.SmCountUpTimerService"/>
+        <service android:name=".service.SmCountDownTimerService"/>
 
         <!-- レシーバ群 -->
         <receiver android:name=".receiver.SmReceiver">

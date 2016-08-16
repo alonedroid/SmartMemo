@@ -13,7 +13,11 @@ import com.alonedroid.smartmemo.R;
 import com.alonedroid.smartmemo.SmApplication;
 import com.alonedroid.smartmemo.ui.SmCardView;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class SmViewPlant {
+
+    private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
 
     public static View shipMainLeftMenu(String text, int color) {
         TextView tv = new TextView(SmApplication.context);
@@ -40,6 +44,17 @@ public class SmViewPlant {
         cv.setUseCompatPadding(true);
 
         return cv;
+    }
+
+    public static int generateID() {
+        while (true) {
+            final int result = sNextGeneratedId.get();
+            int newValue = result + 1;
+            if (newValue > 0x00FFFFFF) newValue = 1;
+            if (sNextGeneratedId.compareAndSet(result, newValue)) {
+                return result;
+            }
+        }
     }
 
     /**

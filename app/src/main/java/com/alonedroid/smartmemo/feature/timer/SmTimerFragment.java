@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.alonedroid.smartmemo.R;
 import com.alonedroid.smartmemo.databinding.FragmentTimerBinding;
+import com.alonedroid.smartmemo.service.SmCountDownTimerService;
 import com.alonedroid.smartmemo.service.SmCountUpTimerService;
 
 public class SmTimerFragment extends Fragment {
@@ -24,8 +25,13 @@ public class SmTimerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_timer, container, false);
+        mBinding.timerCountDown.setOnClickListener(v -> startCountDown());
         mBinding.timerCountUp.setOnClickListener(v -> startCountUp());
         return mBinding.getRoot();
+    }
+
+    private void startCountDown(){
+        SmCountDownTimerService.startService(getContext());
     }
 
     private void startCountUp() {
