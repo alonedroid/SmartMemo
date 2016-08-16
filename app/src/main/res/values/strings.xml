@@ -7,8 +7,15 @@
     <string name="dialog_memo_detail_positive">保存</string>
     <string name="dialog_memo_detail_negative">キャンセル</string>
 
+    <!-- 計測画面 -->
+    <string name="timer_count_down_label">カウントダウンタイマー</string>
+    <string name="timer_count_up_label">カウントアップタイマー</string>
+    <string name="timer_count_up_btn">カウントアップ</string>
+    <string name="timer_how_to_remove">消し方</string>
+    <string name="timer_how_to_remove_message">※タイマーをダブルタップすると消えます。</string>
+
     <!-- 計測ダイアログ -->
-    <string name="timer_default_time">-- : --</string>
+    <string name="timer_default_time">00 : 00</string>
     <string name="timer_comp_message">終了</string>
 
     <!-- アプリケーション -->
@@ -17,4 +24,5 @@
 
     <!-- チュートリアル -->
     <string name="tutorial_memo_1">メモは長押しで削除予約でき、\n次回表示時に削除されます。</string>
+
 </resources>

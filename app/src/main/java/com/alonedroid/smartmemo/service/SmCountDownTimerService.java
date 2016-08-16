@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.alonedroid.smartmemo.SmApplication;
 import com.alonedroid.smartmemo.util.SmResourceManager;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class SmCountDownTimerService extends SmTimerService {
 
@@ -25,7 +25,7 @@ public class SmCountDownTimerService extends SmTimerService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent == null)return START_NOT_STICKY;
+        if (intent == null) return START_NOT_STICKY;
 
         settingTime = intent.getIntExtra(EXTRA_COUNT_DOWN_TIME, 0);
         return super.onStartCommand(intent, flags, startId);
@@ -51,14 +51,14 @@ public class SmCountDownTimerService extends SmTimerService {
 
     @Override
     protected void passedTime() {
-        for (Integer id : mTime.keySet()) {
+        Set<Integer> keys = mTime.keySet();
+        for (Integer id : keys) {
             Integer value = mTime.get(id) - 1;
-            if( value > 0) {
+            if (value > 0) {
                 setTime(id, value);
                 mTime.put(id, value);
-            }else{
+            } else {
                 setMessage(id, SmResourceManager.getTimerCompMessage());
-                mTime.remove(id);
             }
         }
     }

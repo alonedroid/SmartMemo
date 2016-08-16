@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.alonedroid.smartmemo.ui.SmTimerView;
+import com.alonedroid.smartmemo.util.SmCommon;
 import com.alonedroid.smartmemo.util.SmViewPlant;
 
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
@@ -142,16 +142,14 @@ abstract public class SmTimerService extends Service {
     }
 
     protected void setTime(int id, int seconds) {
-        String time = String.format(Locale.JAPAN, "%1$02d", seconds / 60) + " : "
-                + String.format(Locale.JAPAN, "%1$02d", seconds % 60);
-        setMessage(id, time);
+        setMessage(id, SmCommon.convert00m00s(seconds));
     }
 
-    protected void setMessage(int id, String msg){
+    protected void setMessage(int id, String msg) {
         mFloatingViews.get(id).setTimerTime(msg);
     }
 
-    protected int addedViewSize(){
+    protected int addedViewSize() {
         return mFloatingViews.size();
     }
 }
