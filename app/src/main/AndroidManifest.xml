@@ -22,12 +22,12 @@
         <!-- サブActivity -->
         <activity
             android:name=".feature.memo.input.SmMemoInputActivity"
-            android:theme="@style/TranslucentTheme"
-            />
+            android:theme="@style/TranslucentTheme"/>
 
         <!-- サービス群 -->
         <service android:name=".service.SmCountUpTimerService"/>
         <service android:name=".service.SmCountDownTimerService"/>
+        <service android:name=".service.SmRespawnNotificationService"/>
 
         <!-- レシーバ群 -->
         <receiver android:name=".receiver.SmReceiver">
