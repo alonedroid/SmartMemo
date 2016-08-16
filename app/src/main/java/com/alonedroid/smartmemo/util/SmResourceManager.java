@@ -34,4 +34,8 @@ public class SmResourceManager {
     public static String getTutorialMemo1(){
         return SmApplication.resources.getString(R.string.tutorial_memo_1);
     }
+
+    public static String getTimerCompMessage(){
+        return SmApplication.resources.getString(R.string.timer_comp_message);
+    }
 }

@@ -31,7 +31,7 @@ public class SmTimerFragment extends Fragment {
     }
 
     private void startCountDown(){
-        SmCountDownTimerService.startService(getContext());
+        SmCountDownTimerService.startService(getContext(), 180);
     }
 
     private void startCountUp() {

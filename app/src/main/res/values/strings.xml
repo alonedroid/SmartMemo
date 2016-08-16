@@ -9,6 +9,7 @@
 
     <!-- 計測ダイアログ -->
     <string name="timer_default_time">-- : --</string>
+    <string name="timer_comp_message">終了</string>
 
     <!-- アプリケーション -->
     <string name="settings_text_str">メモ入力へのショートカットを通知領域に表示する</string>

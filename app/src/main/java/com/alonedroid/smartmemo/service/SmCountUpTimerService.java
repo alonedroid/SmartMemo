@@ -18,7 +18,7 @@ public class SmCountUpTimerService extends SmTimerService {
 
     @Override
     protected boolean isUse() {
-        return mTime.size() < MAX_COUNT_DOWN_TIMER;
+        return addedViewSize() < MAX_COUNT_DOWN_TIMER;
     }
 
     @Override

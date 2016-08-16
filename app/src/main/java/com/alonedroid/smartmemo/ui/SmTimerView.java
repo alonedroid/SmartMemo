@@ -14,8 +14,6 @@ import java.util.Locale;
 
 public class SmTimerView extends LinearLayout {
 
-    private int counter;
-
     private ViewTimerBinding mBinding;
 
     public SmTimerView(Context context) {
@@ -29,7 +27,7 @@ public class SmTimerView extends LinearLayout {
 
     private void init(Context context) {
         mBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.view_timer, this, true);
-        int pad = getResources().getDimensionPixelSize(R.dimen.activity_horizontal_margin);
+        int pad = getResources().getDimensionPixelSize(R.dimen.timer_padding);
         setPadding(pad, pad, pad, pad);
         setOrientation(VERTICAL);
         setLayoutParams(SmViewPlant.lpTimer());

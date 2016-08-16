@@ -144,6 +144,14 @@ abstract public class SmTimerService extends Service {
     protected void setTime(int id, int seconds) {
         String time = String.format(Locale.JAPAN, "%1$02d", seconds / 60) + " : "
                 + String.format(Locale.JAPAN, "%1$02d", seconds % 60);
-        mFloatingViews.get(id).setTimerTime(time);
+        setMessage(id, time);
+    }
+
+    protected void setMessage(int id, String msg){
+        mFloatingViews.get(id).setTimerTime(msg);
+    }
+
+    protected int addedViewSize(){
+        return mFloatingViews.size();
     }
 }
